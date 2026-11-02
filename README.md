@@ -13,6 +13,7 @@ Open `index.html` or serve this folder with any static web server. No install, b
 - Both units, individual units, and vocabulary/grammar/content focus.
 - Quick Match, Cup Run and Full Training.
 - Realistic generated stadium and transparent player/keeper imagery, animated shots, optional synthesized sound, reduced-motion support and mobile layout.
+- A fixed single-screen layout with larger answer feedback, child-friendly header/footer lettering, and paginated answer/report views. On phones the pitch expands during aiming and shooting.
 - First-attempt accuracy, XP, streaks, round coaching and complete answer review.
 - Session resume in the current browser tab; New Student clears the session.
 - Full result and answer report through WhatsApp message parts, text download, copy and print.
@@ -29,6 +30,7 @@ See [CURRICULUM.md](CURRICULUM.md) for lesson objectives, printed page mapping, 
 - `engine.js`: selection, scoring, answer normalization and reporting.
 - `app.js`: interface, session state, audio and animation.
 - `styles.css`: responsive interface and print layout.
+- `viewport.css`: single-screen layout, readable controls and friendly typography.
 - `assets/`: game imagery and icon.
 
 Images were generated with the built-in image generation tool and optimized as WebP. Generation prompts are recorded in `ASSETS.md`. Fonts are requested from Google Fonts with system fallbacks. No analytics, trackers, remote scripts or application backend are used.

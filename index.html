@@ -7,7 +7,7 @@
   <title>Penalty Arena | Mr.Mohamed Farid</title>
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/stadium.webp" as="image">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="viewport.css">
   <script defer src="content.js"></script><script defer src="engine.js"></script><script defer src="app.js"></script>
 </head>
 <body>
@@ -18,12 +18,12 @@
 <main>
 <section id="home" class="screen home-screen">
  <div class="hero-copy"><div class="eyebrow"><span class="live-dot"></span> PRIMARY 5 · CONNECT PLUS · UNITS 1 & 2</div>
- <h1>YOUR ENGLISH.<br>YOUR <span>WINNING<br>SHOT.</span></h1>
+ <h1>YOUR ENGLISH. <br>YOUR <span>WINNING <br>SHOT.</span></h1>
  <p class="intro">The lights are on. The crowd is ready.<br>Read. Answer. Aim. Become an English champion.</p>
  <div class="hero-badges"><span>112 challenges</span><span>14 lessons</span><span>3 question types</span></div>
  <div class="hero-art" aria-hidden="true"><img class="hero-keeper" src="assets/keeper.webp" alt=""><img class="hero-striker" src="assets/striker.webp" alt=""><div class="football hero-ball">⚽</div><span class="art-caption">ONE ANSWER. ONE SHOT. ALL YOU.</span></div>
  <div class="credit">Designed & programmed by <strong>Mr.Mohamed Farid</strong></div></div>
- <div class="registration card"><div class="small-cap lime">PLAYER REGISTRATION</div><h2>Your road to glory<br>starts here.</h2><p class="muted">Enter your details and choose your challenge.</p>
+ <div class="registration card"><div class="small-cap lime">PLAYER REGISTRATION</div><h2>Your road to glory <br>starts here.</h2><p class="muted">Enter your details and choose your challenge.</p>
  <form id="startForm">
  <label for="studentName">Player name <span>*</span></label><input id="studentName" name="name" placeholder="Your full name" required maxlength="70" autocomplete="name">
  <div class="field-row"><div><label for="studentClass">Class <span>*</span></label><input id="studentClass" name="class" placeholder="e.g. 5A" required maxlength="30"></div><div><label for="studentNumber">Student number</label><input id="studentNumber" name="number" placeholder="Optional" maxlength="30"></div></div>
@@ -68,9 +68,11 @@
 <section id="results" class="screen results-screen" hidden>
  <div class="result-hero"><span class="eyebrow">THE FINAL WHISTLE</span><div class="trophy" aria-hidden="true">🏆</div><h1 id="resultHeading">What a performance!</h1><p id="resultPlayer"></p><span class="medal-label" id="medalLabel"></span></div>
  <div class="result-stats"><div><b id="resultGoals">0</b><span>GOALS / SHOTS</span></div><div><b id="resultAccuracy">0%</b><span>ACCURACY</span></div><div><b id="resultXp">0</b><span>MATCH XP</span></div><div><b id="resultStreak">0</b><span>BEST STREAK</span></div></div>
- <div class="result-grid"><div class="card"><span class="small-cap lime">YOUR SKILL REPORT</span><div id="skillBreakdown"></div><p id="resultDuration" class="muted"></p><div id="badges" class="badges"></div></div><div class="card share-card"><span class="small-cap lime">SEND YOUR MATCH REPORT</span><h2>Make your teacher proud.</h2><p>The full report includes your details, score, every answer and its correction.</p><div id="whatsappLinks"></div><p class="privacy-note">Each button opens a prepared WhatsApp message to Mr.Mohamed Farid. Press Send in WhatsApp to deliver each part. No message is sent automatically.</p><div class="share-actions"><button class="secondary" id="downloadBtn">Download full report</button><button class="secondary" id="copyBtn">Copy report</button><button class="secondary" id="printBtn">Print / save PDF</button></div><p id="shareStatus" role="status"></p></div></div>
+ <nav class="result-tabs" aria-label="Result sections"><button class="active" data-result-tab="scorecard">Scorecard</button><button data-result-tab="share">Share result</button><button data-result-tab="review">Answer review</button></nav>
+ <div class="result-grid" id="scorecardPane"><div class="card"><span class="small-cap lime">YOUR SKILL REPORT</span><div id="skillBreakdown"></div><p id="resultDuration" class="muted"></p><div id="badges" class="badges"></div></div></div>
+ <div class="card share-card" id="sharePane" hidden><span class="small-cap lime">SEND YOUR MATCH REPORT</span><h2>Make your teacher proud.</h2><p>The full report includes your details, score, every answer and its correction.</p><div id="whatsappLinks"></div><div class="pager" id="sharePager"><button class="secondary" id="sharePrevBtn">← Previous part</button><span id="sharePageLabel"></span><button class="secondary" id="shareNextBtn">Next part →</button></div><p class="privacy-note">Opens WhatsApp to Mr.Mohamed Farid. Press Send there for each part. Messages are not sent automatically.</p><div class="share-actions"><button class="secondary" id="downloadBtn">Download full report</button><button class="secondary" id="copyBtn">Copy report</button><button class="secondary" id="printBtn">Print / save PDF</button></div><p id="shareStatus" role="status"></p></div>
  <div class="result-buttons"><button class="primary" id="retryBtn">TRAIN YOUR MISSED SHOTS ↻</button><button class="secondary" id="playAgainBtn">New match</button><button class="text-button" id="newStudentBtn">New student</button></div>
- <div class="answer-review card"><div class="review-heading"><h2>Your match, shot by shot.</h2><select id="reviewFilter" aria-label="Filter answer review"><option value="all">All shots</option><option value="wrong">Missed shots</option><option value="correct">Goals</option></select></div><div id="reviewList"></div></div>
+ <div class="answer-review card" id="reviewPane" hidden><div class="review-heading"><h2>Your match, shot by shot.</h2><select id="reviewFilter" aria-label="Filter answer review"><option value="all">All shots</option><option value="wrong">Missed shots</option><option value="correct">Goals</option></select></div><div id="reviewList"></div><div class="pager"><button class="secondary" id="reviewPrevBtn">← Previous shot</button><span id="reviewPageLabel"></span><button class="secondary" id="reviewNextBtn">Next shot →</button></div></div>
  <p class="report-footnote">A browser-generated learning report · First-attempt answers · Designed & programmed by Mr.Mohamed Farid</p>
 </section>
 </main>
