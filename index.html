@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071522">
+  <meta name="description" content="Turn your English skills into winning goals. Connect Plus Primary 5, Units 1 and 2. Designed & programmed by Mr.Mohamed Farid.">
+  <title>Penalty Arena | Mr.Mohamed Farid</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/stadium.webp" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="content.js"></script><script defer src="engine.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<header class="topbar">
+ <a class="brand" href="./" aria-label="Penalty Arena home"><span class="brand-icon">⚽</span><span>PENALTY<span class="lime">ARENA</span><small>ENGLISH CHAMPIONSHIP</small></span></a>
+ <nav aria-label="Game controls"><button class="text-button" id="curriculumBtn">Lesson guide</button><button class="icon-button" id="soundBtn" aria-label="Turn sound on" title="Turn sound on">♪<span id="soundLabel"> OFF</span></button><button class="icon-button" id="fullBtn" aria-label="Enter fullscreen" title="Fullscreen">⛶</button></nav>
+</header>
+<main>
+<section id="home" class="screen home-screen">
+ <div class="hero-copy"><div class="eyebrow"><span class="live-dot"></span> PRIMARY 5 · CONNECT PLUS · UNITS 1 & 2</div>
+ <h1>YOUR ENGLISH.<br>YOUR <span>WINNING<br>SHOT.</span></h1>
+ <p class="intro">The lights are on. The crowd is ready.<br>Read. Answer. Aim. Become an English champion.</p>
+ <div class="hero-badges"><span>112 challenges</span><span>14 lessons</span><span>3 question types</span></div>
+ <div class="hero-art" aria-hidden="true"><img class="hero-keeper" src="assets/keeper.webp" alt=""><img class="hero-striker" src="assets/striker.webp" alt=""><div class="football hero-ball">⚽</div><span class="art-caption">ONE ANSWER. ONE SHOT. ALL YOU.</span></div>
+ <div class="credit">Designed & programmed by <strong>Mr.Mohamed Farid</strong></div></div>
+ <div class="registration card"><div class="small-cap lime">PLAYER REGISTRATION</div><h2>Your road to glory<br>starts here.</h2><p class="muted">Enter your details and choose your challenge.</p>
+ <form id="startForm">
+ <label for="studentName">Player name <span>*</span></label><input id="studentName" name="name" placeholder="Your full name" required maxlength="70" autocomplete="name">
+ <div class="field-row"><div><label for="studentClass">Class <span>*</span></label><input id="studentClass" name="class" placeholder="e.g. 5A" required maxlength="30"></div><div><label for="studentNumber">Student number</label><input id="studentNumber" name="number" placeholder="Optional" maxlength="30"></div></div>
+ <label for="studentSchool">School</label><input id="studentSchool" name="school" placeholder="Your school (optional)" maxlength="90">
+ <div class="field-row"><div><label for="unitSelect">Playbook</label><select id="unitSelect"><option value="all">Both units</option><option value="1">Unit 1 · Life in my world</option><option value="2">Unit 2 · Look around you</option></select></div><div><label for="focusSelect">Skill focus</label><select id="focusSelect"><option value="all">All skills</option><option>Vocabulary</option><option>Grammar</option><option>Content</option></select></div></div>
+ <label for="lengthSelect">Match format</label><select id="lengthSelect"><option value="2">Cup Run · 2 shots per lesson</option><option value="1">Quick Match · 1 shot per lesson</option><option value="all">Full Training · all questions</option></select>
+ <p class="match-estimate" id="matchEstimate"></p>
+ <button class="primary start-button" type="submit">ENTER THE ARENA <span>→</span></button>
+ <button class="secondary resume-button" id="resumeBtn" type="button" hidden>Resume your match →</button>
+ <p class="privacy-note">Your details stay in this browser tab. At the final whistle, you choose what to share with your teacher.</p>
+ </form></div>
+ <div class="how-strip"><div><b>01</b><span><strong>ANSWER</strong>Choose, judge or correct.</span></div><div><b>02</b><span><strong>TAKE YOUR SHOT</strong>Pick a spot in the goal.</span></div><div><b>03</b><span><strong>LIFT YOUR TROPHY</strong>Review & share your result.</span></div></div>
+</section>
+<section id="match" class="screen" hidden>
+ <div class="match-top"><div><span class="small-cap">ON THE PITCH</span><h2 id="playerTitle">Your match</h2></div><div class="match-actions"><span id="elapsed">00:00</span><button class="text-button" id="pauseBtn">Pause</button><button class="text-button" id="exitBtn">Save & exit</button></div></div>
+ <div class="arena-grid">
+  <div class="pitch-column"><div class="scoreboard"><div><small>GOALS</small><strong id="goalScore">00</strong></div><div class="score-center"><span id="roundName">ROUND 01</span><div id="kickDots" class="kick-dots"></div><small id="shotCount">SHOT 1 / 28</small></div><div><small>SAVED</small><strong id="saveScore">00</strong></div></div>
+  <div class="pitch" id="pitch" aria-label="Football penalty scene with a striker and goalkeeper">
+    <div class="stadium-vignette"></div><div class="pitch-tag">PENALTY ARENA <span>LIVE</span></div>
+    <div class="goal-glow" id="goalGlow"></div>
+    <img id="keeper" class="keeper" src="assets/keeper.webp" alt="Goalkeeper ready to dive">
+    <div class="targets" id="targets" hidden><button data-aim="0" aria-label="Aim top left">↖</button><button data-aim="1" aria-label="Aim top centre">↑</button><button data-aim="2" aria-label="Aim top right">↗</button><button data-aim="3" aria-label="Aim bottom left">↙</button><button data-aim="4" aria-label="Aim bottom right">↘</button></div>
+    <img id="striker" class="striker" src="assets/striker.webp" alt="Footballer preparing to take a penalty">
+    <div class="football ball" id="ball" aria-hidden="true">⚽</div>
+    <div class="shot-banner" id="shotBanner" role="status" aria-live="polite" hidden></div>
+    <div class="pitch-instruction" id="pitchInstruction">READ THE CHALLENGE. EARN YOUR GOAL.</div>
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+  </div>
+  <div class="xp-strip"><span id="streakLabel">⚡ 0 STREAK</span><span id="xpLabel">0 XP</span><span id="bestLabel">BEST 0 XP</span></div>
+  <div class="progress-track" aria-label="Match progress"><div id="matchProgress"></div></div>
+  <p class="fair-play">Your knowledge decides the score. Every correct answer is a goal.</p></div>
+  <div class="challenge card" id="challengePanel" aria-live="polite">
+   <div class="challenge-top"><span class="skill-pill" id="skillPill">VOCABULARY</span><span class="question-number" id="questionNumber">01 / 28</span></div>
+   <p class="lesson-label" id="lessonLabel"></p><div class="question-kind" id="questionKind"></div>
+   <h2 id="questionText" tabindex="-1"></h2>
+   <form id="answerForm"><div id="answerArea"></div><p class="form-error" id="answerError" role="alert"></p><button class="primary" id="lockBtn" type="submit">LOCK ANSWER <span>→</span></button></form>
+   <div id="aimPrompt" class="aim-prompt" hidden><span>🎯</span><h3>Answer locked.</h3><p>Choose a glowing target in the goal to take your shot.</p><small>Use the target buttons, or press 1–5.</small></div>
+   <div id="feedback" class="feedback" hidden><div id="feedbackTitle"></div><p id="yourAnswer"></p><p id="correctAnswer"></p><p id="explanation"></p><small id="sourceLabel"></small><button class="primary" id="nextBtn">NEXT SHOT <span>→</span></button></div>
+  </div>
+ </div>
+</section>
+<section id="results" class="screen results-screen" hidden>
+ <div class="result-hero"><span class="eyebrow">THE FINAL WHISTLE</span><div class="trophy" aria-hidden="true">🏆</div><h1 id="resultHeading">What a performance!</h1><p id="resultPlayer"></p><span class="medal-label" id="medalLabel"></span></div>
+ <div class="result-stats"><div><b id="resultGoals">0</b><span>GOALS / SHOTS</span></div><div><b id="resultAccuracy">0%</b><span>ACCURACY</span></div><div><b id="resultXp">0</b><span>MATCH XP</span></div><div><b id="resultStreak">0</b><span>BEST STREAK</span></div></div>
+ <div class="result-grid"><div class="card"><span class="small-cap lime">YOUR SKILL REPORT</span><div id="skillBreakdown"></div><p id="resultDuration" class="muted"></p><div id="badges" class="badges"></div></div><div class="card share-card"><span class="small-cap lime">SEND YOUR MATCH REPORT</span><h2>Make your teacher proud.</h2><p>The full report includes your details, score, every answer and its correction.</p><div id="whatsappLinks"></div><p class="privacy-note">Each button opens a prepared WhatsApp message to Mr.Mohamed Farid. Press Send in WhatsApp to deliver each part. No message is sent automatically.</p><div class="share-actions"><button class="secondary" id="downloadBtn">Download full report</button><button class="secondary" id="copyBtn">Copy report</button><button class="secondary" id="printBtn">Print / save PDF</button></div><p id="shareStatus" role="status"></p></div></div>
+ <div class="result-buttons"><button class="primary" id="retryBtn">TRAIN YOUR MISSED SHOTS ↻</button><button class="secondary" id="playAgainBtn">New match</button><button class="text-button" id="newStudentBtn">New student</button></div>
+ <div class="answer-review card"><div class="review-heading"><h2>Your match, shot by shot.</h2><select id="reviewFilter" aria-label="Filter answer review"><option value="all">All shots</option><option value="wrong">Missed shots</option><option value="correct">Goals</option></select></div><div id="reviewList"></div></div>
+ <p class="report-footnote">A browser-generated learning report · First-attempt answers · Designed & programmed by Mr.Mohamed Farid</p>
+</section>
+</main>
+<dialog id="guideDialog"><div class="dialog-header"><h2>Your English playbook</h2><button class="icon-button" data-close="guideDialog" aria-label="Close lesson guide">×</button></div><p class="muted">Connect Plus Primary 5 · Units 1 & 2 · 14 lessons · Literature Corner excluded</p><div class="guide-rules"><b>How to play</b><p>Answer one English challenge, lock your answer, then choose a target in the goal. A correct answer scores a goal. An incorrect answer is saved; read the correction and try the next question. Earn 100 XP per goal, plus 25 XP for each step in a streak (bonus capped at 100 XP). There is no answer time limit.</p><p>Quick Match covers every selected lesson once. Cup Run gives two shots per lesson. Full Training uses the complete matching bank. Skill focus can narrow lesson coverage. Your final report shows exactly what you played.</p></div><div id="lessonGuide"></div><p class="muted">Printed textbook page numbers are shown. Literature Corner (Lesson 6 in each unit) is excluded. The separate story lessons remain included. This game practises recognition, grammar and comprehension; speaking and extended writing remain classroom activities.</p><button class="primary" data-close="guideDialog">GOT IT. LET’S PLAY.</button></dialog>
+<dialog id="pauseDialog"><span class="small-cap lime">TIME OUT</span><h2>Take a breath, champion.</h2><p>The match clock is paused. Your progress is safe in this tab.</p><button class="primary" id="continueBtn">BACK TO THE PITCH →</button></dialog>
+<dialog id="roundDialog"><span class="small-cap lime">ROUND COMPLETE</span><h2 id="roundHeading">Keep the momentum!</h2><p id="roundSummary"></p><div class="coach-tip" id="coachTip"></div><button class="primary" id="roundContinueBtn">NEXT ROUND →</button></dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+<footer>Designed & programmed by <strong>Mr.Mohamed Farid</strong><span>LEARN. PLAY. SCORE.</span></footer>
+</body></html>
